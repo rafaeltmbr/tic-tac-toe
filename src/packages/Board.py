@@ -29,7 +29,22 @@ class Board:
 
         self.draw_squares(['', '', '', '', '', '', '', '', ''])
 
+        self._mouse_click_handler = None
+        self._keyboard_press_handler = None
+
+        self.canvas.bind('<Button-1>', self._handle_mouse_click)
+        self.canvas.bind('<Key>', self._handle_keyboard_press)
+
+        self.canvas.focus_set()
+
+    def loop(self):
         self.tk.mainloop()
+
+    def on_mouse_click(self, callback):
+        self._mouse_click_handler = callback
+
+    def on_keyboard_press(self, callback):
+        self._keyboard_press_handler = callback
 
     def draw_squares(self, squares):
         # clear the canvas
@@ -71,3 +86,14 @@ class Board:
         return config['colors']['square_highlight'] \
             if type.isupper() \
             else config['colors']['square']
+
+    def _handle_mouse_click(self, event):
+        if self._mouse_click_handler != None:
+            self._mouse_click_handler({'x': event.x, 'y': event.y})
+
+    def _handle_keyboard_press(self, event):
+        if self._keyboard_press_handler != None:
+            self._keyboard_press_handler({
+                'char': event.char,
+                'keycode': event.keycode
+            })
