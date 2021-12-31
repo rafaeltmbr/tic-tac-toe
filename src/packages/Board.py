@@ -1,4 +1,5 @@
 import tkinter
+from playsound import playsound
 
 from .board_config import config
 from .board_config import squares_coordinates
@@ -46,6 +47,9 @@ class Board:
 
     def on_keyboard_press(self, callback):
         self._keyboard_press_handler = callback
+
+    def play_sound(self):
+        playsound('assets/sounds/click.mp3')
 
     # Draw squares
     # 'x' - draw x

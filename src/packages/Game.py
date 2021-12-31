@@ -18,6 +18,7 @@ class Game:
 
     def _mouse_click_handler(self, coordinate):
         print('Clicked:', coordinate)
+        self.board.play_sound()
 
     def _keyboard_press_handler(self, keyinfo):
         print('Pressed:', keyinfo)
