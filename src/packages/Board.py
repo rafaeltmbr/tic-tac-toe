@@ -12,6 +12,7 @@ class Board:
 
     def _start(self):
         self.tk.title('Tic-tac-toe')
+        self.tk.resizable(False, False)
 
         self.canvas = tkinter.Canvas(
             self.tk,
