@@ -47,6 +47,13 @@ class Board:
     def on_keyboard_press(self, callback):
         self._keyboard_press_handler = callback
 
+    # Draw squares
+    # 'x' - draw x
+    # 'o' - draw o
+    # 'X' - draw x with highlight
+    # 'O' - draw o with highlight
+    # ''  - draw an empty square
+
     def draw_squares(self, squares):
         # clear the canvas
         self.canvas.delete('all')
